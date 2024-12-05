@@ -1,0 +1,128 @@
+# Creating a basic HTML, CSS, and JavaScript structure for the EIA token website
+
+# HTML content
+html_content = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIA Token - Join Presale</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Welcome to EIA Token</h1>
+            <p>Join the presale and be part of our journey to success!</p>
+            <a href="#presale" class="button">Join Presale</a>
+        </div>
+    </header>
+    <main>
+        <section class="about">
+            <div class="container">
+                <h2>About EIA</h2>
+                <p>EIA is a revolutionary cryptocurrency designed to bring simplicity and efficiency to the market. Our mission is to achieve a 1 Billion Market Cap while providing value to our investors.</p>
+            </div>
+        </section>
+        <section id="presale" class="presale">
+            <div class="container">
+                <h2>Presale is Live!</h2>
+                <p>Get your EIA tokens now and join the revolution. Click below to purchase.</p>
+                <a href="#" class="button">Buy EIA Tokens</a>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 EIA Token. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+"""
+
+# CSS content
+css_content = """
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    background-color: #f4a261;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.header .button {
+    background-color: #264653;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.header .button:hover {
+    background-color: #2a9d8f;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.about, .presale {
+    padding: 50px 20px;
+    background-color: #e9c46a;
+    margin: 20px 0;
+}
+
+.presale .button {
+    background-color: #264653;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.presale .button:hover {
+    background-color: #2a9d8f;
+}
+
+.footer {
+    background-color: #264653;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+"""
+
+# Writing the files to a ZIP archive
+import zipfile
+import os
+
+output_dir = "/mnt/data/EIA_Website"
+os.makedirs(output_dir, exist_ok=True)
+
+with open(os.path.join(output_dir, "index.html"), "w") as html_file:
+    html_file.write(html_content)
+
+with open(os.path.join(output_dir, "style.css"), "w") as css_file:
+    css_file.write(css_content)
+
+zip_path = "/mnt/data/EIA_Website.zip"
+with zipfile.ZipFile(zip_path, "w") as zip_file:
+    zip_file.write(os.path.join(output_dir, "index.html"), "index.html")
+    zip_file.write(os.path.join(output_dir, "style.css"), "style.css")
+
+zip_path
